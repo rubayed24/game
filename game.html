@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Gaming</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+
+
+    <style>
+
+
+/* Basic Styling for Navigation */
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.nav-links {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: #555;
+    color: #ff6347; /* Hover color */
+}
+
+/* Mobile View - Hide Navigation and Show Hamburger Menu */
+.menu-icon {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    /* Hide nav links by default */
+    .nav-links {
+        display: none;
+        width: 100%;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    /* Show hamburger menu on mobile */
+    .menu-icon {
+        display: block;
+    }
+
+    .nav-links.active {
+        display: block;
+    }
+
+    /* Spacing for each nav item on mobile */
+    .nav-links li {
+        margin: 10px 0;
+    }
+}
+
+/* Optional: Styling for the active class to show/hide menu */
+.nav-links.active {
+    display: block;
+}
+
+
+
+
+/* Featured Games Section */
+.featured-games {
+    
+    padding: 60px 20px ;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Title of the Featured Games Section */
+.featured-games h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: #28a745;  /* Adds emphasis to the title */
+}
+
+/* Container for Scrolling Games */
+.games-container-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    overflow: hidden;  /* Hide overflow so that the scroll happens smoothly */
+    width: 100%;
+}
+
+.games-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 30px;
+    animation: scrollGames 20s linear infinite;
+}
+
+@keyframes scrollGames {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Game Card Styling */
+.game-card {
+    background-color: #444;
+    padding: 20px 10px;
+    border-radius: 15px;
+    width: 250px;  /* Set a consistent width */
+    height: 350px; /* Fixed height */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.game-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    opacity: 0.9; /* Slight fade effect on hover */
+}
+
+.game-card img {
+    width: 100%;
+    height: 60%;
+    object-fit: cover; /* Ensures images cover the area without distortion */
+    border-radius: 10px;
+}
+
+.game-info {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 40%; /* Ensures the info section stays proportionate */
+}
+
+.game-info h3 {
+    font-size: 1.5em;
+    color: #fff; /* Better contrast with the background */
+}
+
+.game-info p {
+    font-size: 1.1em;
+    color: #ddd;  /* Light gray for description text */
+}
+
+.game-info .description {
+    color: #bbb;  /* Slightly lighter description text */
+    font-style: italic;
+}
+
+/* Mobile Adjustments */
+@media screen and (max-width: 768px) {
+    .featured-games h2 {
+        font-size: 2em;  /* Adjust header size for smaller screens */
+    }
+
+    .games-container {
+        flex-direction: column;  /* Stack the games vertically */
+        gap: 20px;  /* Reduce gap between cards */
+        animation: none;  /* Disable animation on smaller screens */
+    }
+
+    .game-card {
+        width: 90%;  /* Make the game cards more responsive on small screens */
+        height: auto;  /* Allow height to adjust based on content */
+    }
+
+    .game-info h3 {
+        font-size: 1.3em;  /* Adjust font size for mobile */
+    }
+
+    .game-info p {
+        font-size: 1em;  /* Adjust font size for mobile */
+    }
+}
+
+
+
+
+/* Game Demo Section */
+.game-demo {
+    padding: 60px 20px;
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+}
+
+.demo-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    justify-items: center;
+}
+
+.game-item {
+    background-color: #444;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.game-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.game-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.game-item h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.game-item p {
+    font-size: 1.1em;
+    color: #ccc;
+}
+
+.game-item .description {
+    color: #ddd;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+
+
+
+/* Contact Us Section */
+/* Contact Section */
+.contact {
+    background-color: #222;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Contact Form Styling */
+.contact-form {
+    background-color: #444;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    font-size: 1.1em;
+    color: #fff;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;  /* Increased padding for a cleaner look */
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 5px;
+    background-color: #333; /* Darker input fields for better contrast */
+    color: #fff; /* Text color inside input fields */
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.contact-form button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #218838;
+    transform: scale(1.05); /* Subtle button scale effect on hover */
+}
+
+/* Contact Information Styling */
+.contact-info {
+    background-color: #333;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.contact-info h3 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.contact-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.contact-info li {
+    margin: 10px 0;
+}
+
+.contact-info li strong {
+    color: #28a745;
+}
+
+/* Mobile Adjustments */
+@media screen and (max-width: 768px) {
+    .contact-container {
+        gap: 30px;
+        padding: 0 20px; /* Add padding to avoid elements touching edges */
+    }
+
+    .contact h2 {
+        font-size: 2em;  /* Adjust header size for smaller screens */
+        margin-bottom: 20px; /* Reduce spacing */
+    }
+
+    .contact-form,
+    .contact-info {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .contact-form button {
+        width: 100%; /* Button now takes full width on mobile */
+        margin-top: 15px;
+    }
+
+    .contact-info ul {
+        font-size: 1em;  /* Adjust font size for mobile */
+    }
+}
+
+
+
+/* Footer Section */
+.footer {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Footer Container */
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Footer Content */
+.footer-content h2 {
+    font-size: 2.5em;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #28a745;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.footer-content p {
+    font-size: 1.2em;
+    color: #ddd;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer Links */
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+    font-size: 1.1em;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #ddd;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.footer-links a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #28a745;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #fff;
+}
+
+.footer-links a:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Footer Social Icons */
+.footer-socials {
+    display: flex;
+    gap: 20px;
+    font-size: 2em;
+}
+
+.footer-socials .social-icon {
+    color: #ddd;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-socials .social-icon:hover {
+    color: #28a745;
+    transform: translateY(-5px);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    margin-top: 40px;
+    font-size: 1em;
+    color: #888;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer Animation */
+@keyframes glowing {
+    0% { text-shadow: 0 0 5px #28a745, 0 0 10px #28a745, 0 0 15px #28a745; }
+    50% { text-shadow: 0 0 20px #28a745, 0 0 30px #28a745, 0 0 40px #28a745; }
+    100% { text-shadow: 0 0 5px #28a745, 0 0 10px #28a745, 0 0 15px #28a745; }
+}
+
+.footer-content h2 {
+    animation: glowing 1.5s infinite alternate;
+}
+
+
+
+
+  
+    </style>
+
+</head>
+
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Gaming Portal</h1>
+            </div>
+            <!-- Hamburger Icon for Mobile -->
+            <div class="menu-icon" id="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home"><i class="fas fa-home"></i></a></li>
+                <li><a href="#about"><i class="fas fa-info-circle"></i></a></li>
+                <li><a href="#games"><i class="fas fa-gamepad"></i></a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+
+
+
+
+
+
+    <!-- Featured Games Section -->
+    <section id="featured-games" class="featured-games">
+        <h2>Featured Games</h2>
+        <div class="games-container">
+            <div class="game-card">
+                <img src="https://via.placeholder.com/200" alt="Game 1">
+                <div class="game-info">
+                    <h3>Game 1</h3>
+                    <p>Action, Adventure</p>
+                    <p class="description">An action-packed adventure game with amazing graphics and gameplay!</p>
+                </div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/200" alt="Game 2">
+                <div class="game-info">
+                    <h3>Game 2</h3>
+                    <p>RPG, Strategy</p>
+                    <p class="description">Explore an immersive RPG with unique strategies and quests!</p>
+                </div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/200" alt="Game 3">
+                <div class="game-info">
+                    <h3>Game 3</h3>
+                    <p>Sports, Simulation</p>
+                    <p class="description">Realistic sports simulation for ultimate gaming experience!</p>
+                </div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/200" alt="Game 4">
+                <div class="game-info">
+                    <h3>Game 4</h3>
+                    <p>Fantasy, Role-playing</p>
+                    <p class="description">Immerse yourself in a magical fantasy world with endless quests!</p>
+                </div>
+            </div>
+            <!-- Repeat the game cards for smooth looping -->
+            <div class="game-card">
+                <img src="https://via.placeholder.com/200" alt="Game 1">
+                <div class="game-info">
+                    <h3>Game 1</h3>
+                    <p>Action, Adventure</p>
+                    <p class="description">An action-packed adventure game with amazing graphics and gameplay!</p>
+                </div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/200" alt="Game 2">
+                <div class="game-info">
+                    <h3>Game 2</h3>
+                    <p>RPG, Strategy</p>
+                    <p class="description">Explore an immersive RPG with unique strategies and quests!</p>
+                </div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/200" alt="Game 3">
+                <div class="game-info">
+                    <h3>Game 3</h3>
+                    <p>Sports, Simulation</p>
+                    <p class="description">Realistic sports simulation for ultimate gaming experience!</p>
+                </div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/200" alt="Game 4">
+                <div class="game-info">
+                    <h3>Game 4</h3>
+                    <p>Fantasy, Role-playing</p>
+                    <p class="description">Immerse yourself in a magical fantasy world with endless quests!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Demo Section -->
+    <section id="game-demo" class="game-demo">
+        <h2>Game Demos</h2>
+        <div class="demo-container">
+            <div class="game-item">
+                <img src="https://via.placeholder.com/150?text=COD+Logo" alt="Call of Duty Logo">
+                <h3>Call of Duty</h3>
+                <p>First-Person Shooter</p>
+                <p class="description">A fast-paced shooter with multiplayer modes, special ops, and a battle royale mode.</p>
+            </div>
+            <div class="game-item">
+                <img src="https://via.placeholder.com/150?text=Fortnite+Logo" alt="Fortnite Logo">
+                <h3>Fortnite</h3>
+                <p>Battle Royale</p>
+                <p class="description">A free-to-play battle royale where players fight for survival in a shrinking map.</p>
+            </div>
+            <div class="game-item">
+                <img src="https://via.placeholder.com/150?text=Minecraft+Logo" alt="Minecraft Logo">
+                <h3>Minecraft</h3>
+                <p>Sandbox</p>
+                <p class="description">A game about building, exploring, and surviving in a block-based world.</p>
+            </div>
+            <div class="game-item">
+                <img src="https://via.placeholder.com/150?text=LoL+Logo" alt="League of Legends Logo">
+                <h3>League of Legends</h3>
+                <p>MOBA</p>
+                <p class="description">A strategy-based multiplayer online battle arena where teams of players compete.</p>
+            </div>
+            <div class="game-item">
+                <img src="https://via.placeholder.com/150?text=FIFA+Logo" alt="FIFA Logo">
+                <h3>FIFA</h3>
+                <p>Sports</p>
+                <p class="description">A popular football simulation game where you can play as real-life football teams.</p>
+            </div>
+            <div class="game-item">
+                <img src="https://via.placeholder.com/150?text=PUBG+Logo" alt="PUBG Logo">
+                <h3>PlayerUnknown’s Battlegrounds</h3>
+                <p>Battle Royale</p>
+                <p class="description">A survival battle royale where players fight to be the last one standing.</p>
+            </div>
+            <div class="game-item">
+                <img src="https://via.placeholder.com/150?text=Overwatch+Logo" alt="Overwatch Logo">
+                <h3>Overwatch</h3>
+                <p>First-Person Shooter</p>
+                <p class="description">A team-based shooter where heroes with unique abilities fight to complete objectives.</p>
+            </div>
+            <div class="game-item">
+                <img src="https://via.placeholder.com/150?text=Apex+Legends+Logo" alt="Apex Legends Logo">
+                <h3>Apex Legends</h3>
+                <p>Battle Royale</p>
+                <p class="description">A fast-paced battle royale with unique characters, abilities, and teamwork.</p>
+            </div>
+            <div class="game-item">
+                <img src="https://via.placeholder.com/150?text=Zelda+Logo" alt="The Legend of Zelda Logo">
+                <h3>The Legend of Zelda</h3>
+                <p>Action-Adventure</p>
+                <p class="description">An action-packed game following the hero Link, exploring dungeons, and defeating monsters.</p>
+            </div>
+            <div class="game-item">
+                <img src="https://via.placeholder.com/150?text=Among+Us+Logo" alt="Among Us Logo">
+                <h3>Among Us</h3>
+                <p>Multiplayer</p>
+                <p class="description">A party game where players work together to complete tasks while impostors try to sabotage them.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-container">
+            <!-- Contact Form -->
+            <form action="#" method="POST" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" required placeholder="Write your message here..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h3>Or Reach Us Directly</h3>
+                <ul>
+                    <li><strong>Phone:</strong> +1 234 567 890</li>
+                    <li><strong>Email:</strong> support@yourwebsite.com</li>
+                    <li><strong>Address:</strong> 123 Gaming Street, City, Country</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <script>
+        // Simple form validation
+        document.querySelector(".contact-form").addEventListener("submit", function(event) {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+    
+            if (!name || !email || !message) {
+                event.preventDefault();
+                alert("Please fill in all fields.");
+            }
+        });
+    </script>
+    
+ 
+    <!-- Footer Section -->
+    <!-- Footer Section -->
+<footer id="footer" class="footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <h2>Gaming Portal</h2>
+            <p>Your favorite place for all things gaming.</p>
+        </div>
+        <div class="footer-links">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#games">Featured Games</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-socials">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Gaming Portal. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

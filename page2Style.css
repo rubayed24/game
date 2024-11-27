@@ -1,0 +1,385 @@
+/* General Reset and Basic Styles */
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+
+}
+
+/* General styling for navigation */
+
+.navbar{
+    position: fix;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.3rem 10%;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur;
+
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    
+    backdrop-filter: blure(50px);
+    border-radius: 66px;
+    margin: 5px;
+    border:none;
+    z-index: 100;
+} 
+
+nav .logo {
+    width: 50px;  /* You can adjust this based on your logo size */
+}
+
+.nav-links {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+
+.nav-links a:hover {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+input[type="text"] {
+    padding: 5px;
+    font-size: 14px;
+}
+
+button {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Responsive Design for smaller screens */
+@media screen and (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-links li {
+        display: block;
+    }
+
+    .nav-links a {
+        padding: 10px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+
+/* Hero Section */
+.home {
+    background-color: #e9ecef;
+    padding: 100px 0;
+}
+
+/* Flex container for the hero section */
+.home-ins {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    flex-wrap: wrap; /* Ensure responsiveness */
+}
+
+/* Text styling */
+.text-container {
+    flex: 1;
+    padding: 20px;
+    text-align: left;
+}
+
+.text-line {
+    font-size: 3rem;
+    color: #007bff;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Rotating Border for Image */
+.image-wrapper {
+    position: relative;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.image-wrapper img {
+    max-width: 300px;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out; /* Image hover effect */
+}
+
+/* First rotating border (Clockwise) */
+.rotating-border-clockwise {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px dashed aqua;
+    border-radius: 50%;
+    animation: rotateClockwise 10s linear infinite;
+}
+
+/* Second rotating border (Counterclockwise) */
+.rotating-border-counterclockwise {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px dotted #0f5f85b6; /* Different color to contrast */
+    border-radius: 50%;
+    animation: rotateCounterClockwise 5s linear infinite;
+}
+
+/* Animation for rotating clockwise */
+@keyframes rotateClockwise {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Animation for rotating counterclockwise */
+@keyframes rotateCounterClockwise {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+}
+
+/* Hover effect for the image */
+.image-wrapper img:hover {
+    transform: scale(1.1); /* Slight zoom effect */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .home-ins {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .text-line {
+        font-size: 2.5rem; /* Adjust font size for smaller screens */
+    }
+
+    .image-wrapper {
+        margin-top: 20px;
+    }
+
+    .image-wrapper img {
+        max-width: 250px; /* Adjust image size for smaller screens */
+    }
+
+    /* Reduce the size of the first rotating border in responsive mode */
+    .rotating-border-clockwise {
+        width: 80%;
+        height: 80%;
+        border: 2px dashed #007bff; /* Reversed border for contrast */
+    }
+
+    /* Reverse the counterclockwise rotation border and apply scale effect */
+    .rotating-border-counterclockwise {
+        width: 90%;
+        height: 90%;
+        border: 2px dashed #ff6347; /* Keep contrasting color */
+        transform: scale(0.95); /* Subtle scale shift */
+    }
+}
+
+
+
+
+
+
+
+/* Skills Section */
+.skills {
+    background-color: #fff;
+    padding: 50px 0;
+   
+    
+}
+
+.skill-box {
+    
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.skill-box i {
+    color: #007bff;
+}
+.container{
+    ;
+}
+
+/* Projects Section */
+.projects {
+    background-color: #fff;
+    padding: 50px 0;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Contact Section */
+.style {
+    border: 2px solid rgba(8, 15, 9, 0.288);
+    margin: 20px; 
+    border-radius: 33px;
+    box-shadow: 4px 4px 10px 2px rgba(0, 0, 0, 0.2); 
+    padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .style {
+        margin: 10px;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    }
+}
+
+@media (max-width: 480px) {
+    .style {
+        margin: 5px;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
+    }
+}
+
+
+.contact-section {
+    background-color: #fff;
+    padding: 50px 0;
+}
+
+.contact-section form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.contact-section button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.contact-section button:hover {
+    background-color: #0056b3;
+}
+
+/* Footer Section */
+footer {
+    background-color: #343a40;
+    color: #fff;
+        
+}
+
+footer ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+footer ul li {
+    margin: 10px 0;
+    
+}
+footer ul li :hover{
+    
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer .text-right {
+    text-align: right;
+}
+.list-style {
+    background-color: ;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    color: #f0f0f0;
+    text-decoration: none;
+}
+/* Back to Top Button */
+#backToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: none;
+}
+
+#backToTop:hover {
+    background-color: #0056b3;
+}.
